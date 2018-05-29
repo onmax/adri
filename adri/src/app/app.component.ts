@@ -9,13 +9,13 @@ declare var $: any;
 })
 export class AppComponent implements OnInit {
   static showE = e => {
-    $(`.${e}`).show();
+    $(`.${e}`).css('display', 'flex');
   };
 
   hideAll = () => {
     let elements = ['first', 'second'];
     elements.map(e => {
-      $(`.${e}`).hide();
+      $(`.${e}`).css('display', 'none');
     });
   };
   toSecond() {
@@ -23,6 +23,11 @@ export class AppComponent implements OnInit {
     setTimeout(function() {
       AppComponent.showE('second');
     }, 300);
+
+    let audioPlayer: HTMLAudioElement = <HTMLAudioElement>document.getElementById(
+      'audio'
+    );
+    audioPlayer.play();
   }
 
   ngOnInit() {}
